@@ -29,6 +29,6 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_KEY}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_VALUE}}
       run : |
-        ls -al
+        cd ./deploy-react
         aws s3 cp --recursive --region ap-northeast-2 ./dist s3://react-deploy-session
     
