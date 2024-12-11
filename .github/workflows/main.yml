@@ -33,7 +33,7 @@ jobs:
         aws s3 sync --region ap-northeast-2 ./dist s3://react-deploy-session --delete
         aws cloudfront create-invalidation \
           --distribution-id ${{ secrets.AWS_DISTRIBUTION }} \
-          --paths "/*" \
-          --invalidation-batch '{"Paths": {"Quantity": 1, "Items": ["/*"]}, "CallerReference": "$(date +%s)"}'
+          --paths "/*
+
     
     
