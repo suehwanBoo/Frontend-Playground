@@ -2,7 +2,6 @@ on:
   push:
     branches:
     - main
-    - release/*
 jobs:
   test:
     name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
