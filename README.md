@@ -36,6 +36,6 @@ github action을 활용한 react 프로젝트 S3, cloudfront, dns
  4. 대규모 트래픽으로 발생할 수 있는 지연을 다른 인프라의 확장 없이 안정적으로 처리해줌
 
 
-
-
+## 목표
+이에 S3 + cloudfront로 프론트엔드 빌드 파일을 서빙하는 환경을 만들고 github action을 통해 레포지토리와 S3, cloudfront를 연결하여 CI/CD를 구축하는 것이 목표
  
