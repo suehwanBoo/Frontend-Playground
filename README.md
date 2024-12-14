@@ -31,11 +31,17 @@ github action을 활용한 react 프로젝트 S3, cloudfront, dns
 
 ## 왜 CloudFront일까?
  1. S3의 정적파일을 캐싱하여 전세계 어디서 접근하던 빠른 속도로 파일을 제공할 수 있음
- 2. S3에 대한 접근을 CloudFront를 통해 https를 지원하여 보안을 강화할 수 있음
+ 2. S3에 대한 접근을 CloudFront를 통해 https를 쉽게 변환하고 SSL과 통합하여 보안을 강화할 수 있음
  3. 원천적으로 모든 접근을 AWS 계정 소유자가 아닌 이상 CloudFront를 통해서만 가능하게 함으로 원본 파일의 보안을 강화할 수 있음
- 4. 대규모 트래픽으로 발생할 수 있는 지연을 다른 인프라의 확장 없이 안정적으로 처리해줌
+ 4. 대규모 트래픽으로 발생할 수 있는 지연을 추가 인프라 비용 없이 안정적으로 처리해줌
 
 
 ## 목표
 이에 S3 + cloudfront로 프론트엔드 빌드 파일을 서빙하는 환경을 만들고 github action을 통해 레포지토리와 S3, cloudfront를 연결하여 CI/CD를 구축하는 것이 목표
+
+## 진행할 단계
+1. S3 저장소 만들기
+2. CloudFront를 통해서 S3를 접근 가능하게 만들고 정적 파일을 캐싱하여 서빙하기
+3. 도메인을 등록하여 CloudFront와 통합, Amazon Certificate Manager를 통해 인증서 발급받아 https 적용
+4. Github action을 통해 여러 설정 알아보고 레포지토리 변경시 S3에 파일을 업로드하고 CloudFront에 캐싱되어있던 정적파일들 무효화 이후, 다시 캐싱되게 하기
  
