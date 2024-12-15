@@ -132,5 +132,20 @@ ex) "Resource": "arn:aws:s3:::ararararararar위치는 여기 뒤입니다/*"
 #### 13) 캐싱을 무효화하고 다시 적용하는데 시간이 살짝 들기에 1~2분 정도 기다렸다가 기본 도메인으로 들어가면 적용된것을 확인할 수 있다.
 ![image](https://github.com/user-attachments/assets/3a3bc76e-5830-47fb-81ec-56000926bc4c)
 
+## 3. 도메인을 등록하여 CloudFront와 통합하고 Amazon Certificate Manager를 통해 도메인의 SSL인증서를 발급받아 https 적용하기
+
+#### 1) 가비아나 DNS 서비스를 제공해주는 서비스를 활용하여 도메인을 만들고 Amazon Certificate Manager를 통해 우선 SSL 인증서를 발급받자.
+#### 해당 사항을 도와주고 싶으나 이미 해당 도메인으로 서비스의 SSL 인증서를 발급받은 상태라 도메인을 사고 CNAME을 등록해서 하면 크게 어렵지 않으니 혼자 해보자.
+
+#### 2) 이후 CloudFront의 일반 - 설정 - 편집에 들어가 도메인을 추가한다.
+![image](https://github.com/user-attachments/assets/48003ee6-2ccc-4622-b3f1-ca431a112412)
+
+
+#### 3) 그리고 발급받은 SSL 인증서를 클릭하고 변경사항을 저장하면 된다.
+![image](https://github.com/user-attachments/assets/cebbba7f-2827-4c36-91e3-2686c31ba56a)
+
+#### 결과 화면
+![image](https://github.com/user-attachments/assets/a89780cb-e9b9-47c3-ad83-ade0ed6c8606)
+
 
  
