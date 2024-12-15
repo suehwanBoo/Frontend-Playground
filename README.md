@@ -46,4 +46,17 @@ AWS에서 제공하는 CDN(Content Delivery Network)으로 빠른 속도로 파�
 2. CloudFront와 S3를 연결하여, CloudFront를 통해서 S3에 접근 가능하게 하기
 3. 도메인을 등록하여 CloudFront와 통합하고 Amazon Certificate Manager를 통해 도메인의 SSL인증서를 발급받아 https 적용하기
 4. Github action을 통해 레포지토리와 S3 + CloudFront를 연결하여 CI/CD 구축하기
+
+## 1. S3 저장소 만들기
+
+1) 아마존에 로그인 이후 S3 서비스에 들어가서 버킷만들기를 클릭한 후 사용할 버킷의 이름을 지어준다.
+![image](https://github.com/user-attachments/assets/c4b8e628-536e-4397-993f-d7eb34dd8f61)
+
+2) 객체 소유권의 경우 내 아마존 계정에서 모두 관리할 것이고 이를 AWS에서 권장하기에 ACL을 비활성화로 둔다.
+![image](https://github.com/user-attachments/assets/ab0b447b-558e-4fb1-b156-434839cd6a48)
+
+3) 버킷의 퍼블릭 엑세스는 이후 CloudFront를 통해서만 접근을 하게 하려면 모두 꺼야하지만, 우선적으로 S3가 제대로 동작하는지를 확인하기 위하여 모두 활성화하고 밑의 경고도 체크해서 제대로 작동하는지 확인후 이후 CloudFront를 적용하기 전에 다시 끄도록 하자
+![image](https://github.com/user-attachments/assets/13269583-9619-479d-984d-cd800821045c)
+
+나머지 설정은 모두 AWS의 디폴트 설정으로 두고 버킷 만들기를 눌러서 S3 저장소를 만들어보자
  
