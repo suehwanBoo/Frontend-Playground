@@ -75,11 +75,12 @@ AWS에서 제공하는 CDN(Content Delivery Network)으로 빠른 속도로 파�
 #### 5) 정책 생성기에서 다음의 설정들을 따라해준다.
 ![image](https://github.com/user-attachments/assets/d223b68b-ffee-4ca4-8bbf-a09eb1d71df6)
 ![image](https://github.com/user-attachments/assets/2593701b-e72e-4d30-b9fe-28bacf8d99df)
+-> Get Object는 한마디로 안에 파일 객체들을 Get하는 명령을 허용해주는 것이다.
 
 #### 6) ARN 부분의 경우 본인의 버킷 ARN을 복사해서 넣어주고 이후 Generate Policy 클릭 후 나온 JSON 정책을 복사해서 AWS에 넣어준다.
 
 #### 7) 이후 완료를 누르고 만약 오류가 뜬다면 JSON 부분에서 Resourse : 이후 적혀있는 arn 문자열의 뒤에 /*을 추가하고 변경사항 저장을 누른다.
-ex) "Resource": "arn:aws:s3:::ararararararar으아아악/*"
+ex) "Resource": "arn:aws:s3:::ararararararar위치는 여기 뒤입니다/*"
 
 #### 이후 아까 index.html로 접근해보면
 ![image](https://github.com/user-attachments/assets/43b26654-a119-4e68-95e6-dc4e5947f6b4)
@@ -89,7 +90,47 @@ ex) "Resource": "arn:aws:s3:::ararararararar으아아악/*"
 이렇게 하면 S3 버킷 만들기는 끝이다. 다음 파트인 CloudFront 만들고 S3와 연결하기를 해보도록 하자
 
 
+## 2. CloudFront와 S3를 연결하여, CloudFront를 통해서 S3에 접근 가능하게 하기
 
+#### 1) 해당 설정을 하기 이전, 아까 S3가 잘 되는지 확인하려고 했던 S3 퍼블릭 엑세스 설정을 버킷의 권한에 들어가 퍼블릭 엑세스 모두 체크하여 퍼블릭 엑세스를 차단해주자.
+![image](https://github.com/user-attachments/assets/53be7608-e155-4bf6-bd68-99f418bbcc81)
+
+#### 2) AWS의 CloudFront 서비스에 들어가 CloudFront 배포 시작을 누른 원본 Origin domain을 눌러 아까 설정한 S3 버킷을 클릭하자
+![image](https://github.com/user-attachments/assets/36437187-cfd2-4dbf-97f3-9347aa98a01c)
+
+#### 3) 이후 하위의 원본 액세스에서 OAC 즉, 원본 액세스 제어 설정을 클릭하자, 이 부분이 CloudFront로만 S3를 접근하게 하는 설정이다.
+![image](https://github.com/user-attachments/assets/8457ba27-95e2-454f-bae7-6f2a1fe80b66)
+
+#### 4) 위를 클릭한 후 Origin access controll에 내 S3를 넣어주면 된다.
+#### 경고가 나올건데 이건 이후 S3 정책을 위의 설정에 맞게 업데이트 해줄것이다.
+
+#### 5) 나머지는 그대로 두고 뷰어 설정의 뷰어 프로토콜을 HTTP to HTTPS로 바꿔준다.
+![image](https://github.com/user-attachments/assets/280a4d93-786e-4f46-b346-79ed5a92edbe)
+
+#### 6) 이후 웹 어플리케이션 방화벽(WAF) 설정을 비활성화로 둔다.(활성화로 두면 비용이 든다고 하위 항목에 겁을 준다.)
+![image](https://github.com/user-attachments/assets/723cd9b0-cb2f-4f33-a4a2-c02dfb58e842)
+
+#### 7) 도메인 같은 경우에는 다음 프로세스에 재설정 하는것으로 하고 배포 생성을 눌러 CloudFront 설정을 완료해보자
+
+#### 8) 완료 이후 S3 정책을 업데이트 해줘야 한다고 뜨니 해당 경고에 정책 복사를 클릭해 정책을 복사해주자.
+![image](https://github.com/user-attachments/assets/2efa4614-84cf-4c81-b8b9-4f51d170f08f)
+
+#### 9) S3 버킷에 다시 들어가 권한 탭의 정책을 위에서 복사한 정책으로 덮어씌우고 변경사항을 저장하자.
+
+#### 10) 이후 CloudFront의 배포 도메인 이름 주소를 통해 S3에 저장된 index.html로 접근을 해보자.
+![image](https://github.com/user-attachments/assets/2dd6fe97-863a-42af-9685-d44ef8ace0e5)
+
+#### 깔끔하게 동작한다.
+#### 하지만 눈썰미가 좋다면 문제를 찾을 수 있는데 바로 도메인 이후에 /index.html로 접근을 해야하는 점이다.
+
+#### 11) 이 부분을 해결하기 위해서 CloudFront의 일반탭에 설정을 편집해보자
+![image](https://github.com/user-attachments/assets/d3f42555-8cbc-4da6-953c-18e88d54eb30)
+
+#### 12) 편집에 들어간 후 Default root object를 index.html로 바꾸면 도메인을 치고 들어갔을때 index.html을 서빙하게 된다.
+![image](https://github.com/user-attachments/assets/0c88aae1-149c-4b26-8522-4e369c518b03)
+
+#### 13) 캐싱을 무효화하고 다시 적용하는데 시간이 살짝 들기에 1~2분 정도 기다렸다가 기본 도메인으로 들어가면 적용된것을 확인할 수 있다.
+![image](https://github.com/user-attachments/assets/3a3bc76e-5830-47fb-81ec-56000926bc4c)
 
 
  
