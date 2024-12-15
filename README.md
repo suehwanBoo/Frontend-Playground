@@ -42,8 +42,8 @@ AWS에서 제공하는 CDN(Content Delivery Network)으로 빠른 속도로 파�
 이에 S3 + CloudFront로 프론트엔드 환경을 분리하고 github action을 통해 레포지토리에 S3, cloudfront를 연결하여 CI/CD를 구축하는 것
 
 ## 진행할 단계
-1. S3 저장소 만들기
-2. CloudFront를 통해서 S3를 접근 가능하게 만들고 정적 파일을 캐싱하여 서빙하기
-3. 도메인을 등록하여 CloudFront와 통합, Amazon Certificate Manager를 통해 인증서 발급받아 https 적용
-4. Github action을 통해 여러 설정 알아보고 레포지토리 변경시 S3에 파일을 업로드하고 CloudFront에 캐싱되어있던 정적파일들 무효화 이후, 다시 캐싱되게 하기
+1. 빌드된 파일을 저장할 S3 저장소 만들기
+2. CloudFront와 S3를 연결하여, CloudFront를 통해서 S3에 접근 가능하게 하기
+3. 도메인을 등록하여 CloudFront와 통합하고 Amazon Certificate Manager를 통해 도메인의 SSL인증서를 발급받아 https 적용하기
+4. Github action을 통해 레포지토리와 S3 + CloudFront를 연결하여 CI/CD 구축하기
  
