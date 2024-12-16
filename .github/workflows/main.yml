@@ -31,5 +31,13 @@ jobs:
           npm install
           echo "VITE_API_URL=${{secrets.VITE_API_URL}}" >> .env
           npm run build --if-present
-        
+      - name: deploy S3, CloudFront
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_KEY}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_VALUE}}
+        run: |
+          cd ./deploy-react
+          aws s3 sync --region ap-northeast-2 ./dist s3://react-deploy-practice --delete
+          aws cloudfront create-invalidation \
+            --dist
     
