@@ -39,5 +39,6 @@ jobs:
           cd ./deploy-react
           aws s3 sync --region ap-northeast-2 ./dist s3://react-deploy-practice --delete
           aws cloudfront create-invalidation \
-            --dist
+            --distribution-id ${{secrets.AWS_DISTRIBUTION}} \
+            --path "/*"
     
