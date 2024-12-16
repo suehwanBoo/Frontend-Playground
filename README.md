@@ -5,7 +5,7 @@ github action을 활용한 react 프로젝트 S3, cloudfront, dns
 
 
 ## 필요이유
-이전 프로젝트에서의 환경
+이전 Tripeer 프로젝트에서의 환경
  : 프론트엔드(CSR) + 백엔드 환경에서 백엔드 서버(EC2)의 리버스 프록시(NginX)에 빌드된 프론트엔드 정적 파일들을 둔 형태
 
 #### 이전 환경에서의 발생할 수 있는 문제점
@@ -314,6 +314,13 @@ ex) "Resource": "arn:aws:s3:::ararararararar위치는 여기 뒤입니다/*"
 
 ## 이렇게 하면 CI/CD 프로세스가 완료된다.
 
+
+## 결과물
+![image](https://github.com/user-attachments/assets/4ffd6961-bcb3-43a1-9aaf-ea6e50df9d7e)
+![image](https://github.com/user-attachments/assets/7e6f84ac-7de0-4ed0-a25a-04f5968a70c1)
+
+
+#### 안되거나 모르는거 있으면 카톡주세요.
 
 
 
