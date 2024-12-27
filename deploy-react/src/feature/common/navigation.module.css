@@ -1,0 +1,34 @@
+.navbar {
+  display: flex;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0px 100px 0px 50px;
+  justify-content: space-between;
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #262626;
+  height: 75px;
+}
+
+.navbar h1 {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  background-color: #262626;
+  transition: 0.3s ease;
+}
