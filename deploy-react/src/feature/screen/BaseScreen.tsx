@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import NavigationBar from "./NavigationBar";
+import LineNav from "../navbar/line/LineNav";
 import styles from "./base.module.css";
 
 export default function BaseScreen() {
   return (
     <main className={styles.container}>
-      <NavigationBar />
+      <LineNav />
       <Outlet />
     </main>
   );
