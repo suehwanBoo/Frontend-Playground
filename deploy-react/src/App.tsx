@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BaseScreen from "./feature/common/BaseScreen";
+import BaseScreen from "./feature/screen/BaseScreen";
 
 const provider = createBrowserRouter([
   {
