@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./navigation.module.css";
+import styles from "./line.module.css";
 import useLineControll from "./hooks/useLineControll";
 
-export default function NavigationBar() {
+export default function LineNav() {
   const { initLine, lineControll, lineLeft, lineWidth, parent } =
     useLineControll();
   return (
