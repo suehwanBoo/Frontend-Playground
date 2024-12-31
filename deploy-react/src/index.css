@@ -1,5 +1,7 @@
 :root {
-  font-family: "Pretendard Variable";
+  font-family: "Pretendard-Regular";
+  --main-font-color: #262626;
+  --line-color: #e3e3e3;
 }
 
 * {
