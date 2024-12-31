@@ -3,8 +3,7 @@ import styles from "./line.module.css";
 import useLineControll from "./hooks/useLineControll";
 
 export default function LineNav() {
-  const { initLine, lineControll, lineLeft, lineWidth, parent } =
-    useLineControll();
+  const { initLine, lineControll, lineState, parent } = useLineControll();
   return (
     <aside className={styles.navbar}>
       <Link to={"/"}>
@@ -12,20 +11,20 @@ export default function LineNav() {
       </Link>
       <div className={styles.menu} ref={parent} onMouseLeave={initLine}>
         <Link to={"/"} onMouseOver={lineControll}>
-          Home
+          HOME
         </Link>
         <Link to={"/func"} onMouseOver={lineControll}>
-          Function
+          FUNCTION
         </Link>
         <Link to={"/uiux"} onMouseOver={lineControll}>
-          Toolkit
+          TOOLKIT
         </Link>
         <Link to={"/about"} onMouseOver={lineControll}>
-          About
+          ABOUT
         </Link>
         <div
           className={styles.line}
-          style={{ width: `${lineWidth}%`, left: `${lineLeft}px` }}
+          style={{ width: `${lineState.width}%`, left: `${lineState.left}px` }}
         />
       </div>
     </aside>
