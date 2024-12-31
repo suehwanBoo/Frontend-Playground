@@ -1,15 +1,19 @@
 .navbar {
+  position: sticky;
+  top: 0;
   display: flex;
-  border-bottom: 1px solid #e3e3e3;
-  padding: 0px 100px 0px 50px;
+  border-bottom: 1px solid var(--line-color);
+  padding: 0px 100px;
   justify-content: space-between;
+  background-color: #fffc;
+  backdrop-filter: saturate(180%) blur(5px);
 }
 
 .navbar a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #262626;
+  color: var(--main-font-color);
   height: 75px;
 }
 
@@ -21,14 +25,14 @@
 .menu {
   display: flex;
   gap: 30px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   position: relative;
 }
 
 .line {
   position: absolute;
   bottom: 0;
-  height: 1px;
-  background-color: #262626;
+  height: 1.5px;
   transition: 0.3s ease;
+  background-color: var(--main-font-color);
 }

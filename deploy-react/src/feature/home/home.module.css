@@ -1,0 +1,31 @@
+.container {
+  width: 100vw;
+  padding: 0 100px 100px 100px;
+}
+
+.homeBox {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.homeBox header {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.homeBox h1 {
+  font-family: "GmarketSansMedium";
+  font-size: 60px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.illust {
+  height: 400px;
+}
