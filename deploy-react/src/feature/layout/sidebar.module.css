@@ -1,0 +1,38 @@
+.sidebar {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  --offset: 76px;
+  top: var(--offset);
+  grid-area: "sidebar";
+  overflow-y: scroll;
+  height: calc(100vh - var(--offset));
+  padding: 20px 0px;
+}
+
+.sidebar::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.intro {
+  text-decoration: none;
+  color: var(--main-font-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.intro > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.intro:hover {
+  color: var(--main-font-color);
+  background-color: #fafafb;
+}

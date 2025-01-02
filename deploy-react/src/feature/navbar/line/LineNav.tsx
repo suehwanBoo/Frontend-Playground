@@ -5,7 +5,7 @@ import useLineControll from "./hooks/useLineControll";
 export default function LineNav() {
   const { initLine, lineControll, lineState, parent } = useLineControll();
   return (
-    <aside className={styles.navbar}>
+    <nav className={styles.navbar}>
       <Link to={"/"}>
         <h1>PRACTICE.DEV</h1>
       </Link>
@@ -16,7 +16,7 @@ export default function LineNav() {
         <Link to={"/func"} onMouseOver={lineControll}>
           FUNCTION
         </Link>
-        <Link to={"/uiux"} onMouseOver={lineControll}>
+        <Link to={"/toolkit"} onMouseOver={lineControll}>
           TOOLKIT
         </Link>
         <Link to={"/about"} onMouseOver={lineControll}>
@@ -27,6 +27,6 @@ export default function LineNav() {
           style={{ width: `${lineState.width}%`, left: `${lineState.left}px` }}
         />
       </div>
-    </aside>
+    </nav>
   );
 }
