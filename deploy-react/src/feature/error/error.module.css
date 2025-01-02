@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 50px;
+}
+
+.container > h1 {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid var(--main-font-color);
+  text-decoration: none;
+  color: var(--main-font-color);
+  font-size: 1.2rem;
+}
+
+.btn:hover {
+  animation: jelly 0.8s ease;
+  cursor: pointer;
+}
+
+@keyframes jelly {
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
