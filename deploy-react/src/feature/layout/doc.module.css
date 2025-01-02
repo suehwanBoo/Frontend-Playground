@@ -1,0 +1,7 @@
+.wrapper {
+  padding: 0px var(--layout-offset);
+  display: grid;
+  grid-template-areas: "sidebar main view";
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 20px;
+}
