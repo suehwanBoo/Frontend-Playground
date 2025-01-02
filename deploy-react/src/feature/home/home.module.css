@@ -1,6 +1,7 @@
 .container {
   width: 100vw;
-  padding: 0 100px 100px 100px;
+  --offset: var(--layout-offset);
+  padding: 0 var(--offset) var(--offset) var(--offset);
 }
 
 .homeBox {
