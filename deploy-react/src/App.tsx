@@ -5,6 +5,9 @@ import ErrorPage from "./feature/error/ErrorPage";
 import FuncPage from "./feature/func/FuncPage";
 import ToolkitPage from "./feature/toolkit/ToolkitPage";
 import AboutPage from "./feature/about/AboutPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import useAuth from "./feature/auth/useAuth";
 
 const provider = createBrowserRouter([
   {
@@ -32,8 +35,16 @@ const provider = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
-  return <RouterProvider router={provider} />;
+  useAuth();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={provider} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
