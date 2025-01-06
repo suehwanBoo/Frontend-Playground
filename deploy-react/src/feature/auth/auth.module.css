@@ -1,0 +1,53 @@
+.loginBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 70px;
+  right: 100px;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--line-color);
+  border-radius: 50%;
+  gap: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.loginBox > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loginBox > img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.logBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--line-color);
+  border-radius: 50%;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.logBtn > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  bottom: calc(100% + 8px);
+}
