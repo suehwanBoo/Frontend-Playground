@@ -1,32 +1,92 @@
 import { Link } from "react-router-dom";
 import styles from "./line.module.css";
 import useLineControll from "./hooks/useLineControll";
+import { forwardRef, MouseEvent, ReactNode } from "react";
 
 export default function LineNav() {
   const { initLine, lineControll, lineState, parent } = useLineControll();
+
   return (
-    <nav className={styles.navbar}>
-      <Link to={"/"}>
-        <h1>PRACTICE.DEV</h1>
-      </Link>
-      <div className={styles.menu} ref={parent} onMouseLeave={initLine}>
-        <Link to={"/"} onMouseOver={lineControll}>
+    <LineNav.Container>
+      <LineNav.Title to="/">PRACTICE.DEV</LineNav.Title>
+      <LineNav.Menu ref={parent} onMouseLeave={initLine}>
+        <LineNav.Item to="/" onMouseOver={lineControll}>
           HOME
-        </Link>
-        <Link to={"/func"} onMouseOver={lineControll}>
+        </LineNav.Item>
+        <LineNav.Item to="/func" onMouseOver={lineControll}>
           FUNCTION
-        </Link>
-        <Link to={"/toolkit"} onMouseOver={lineControll}>
+        </LineNav.Item>
+        <LineNav.Item to="/toolkit" onMouseOver={lineControll}>
           TOOLKIT
-        </Link>
-        <Link to={"/about"} onMouseOver={lineControll}>
+        </LineNav.Item>
+        <LineNav.Item to="/about" onMouseOver={lineControll}>
           ABOUT
-        </Link>
-        <div
-          className={styles.line}
-          style={{ width: `${lineState.width}%`, left: `${lineState.left}px` }}
-        />
-      </div>
-    </nav>
+        </LineNav.Item>
+        <LineNav.Line width={lineState.width} left={lineState.left} />
+      </LineNav.Menu>
+    </LineNav.Container>
   );
 }
+
+LineNav.Container = ({ children }: { children: ReactNode }) => {
+  return <nav className={styles.navbar}>{children}</nav>;
+};
+
+interface TitleProps {
+  to: string;
+  children: ReactNode;
+}
+
+LineNav.Title = ({ to, children }: TitleProps) => {
+  return (
+    <Link to={to}>
+      <h1>{children}</h1>
+    </Link>
+  );
+};
+
+interface MenuProps {
+  children: ReactNode;
+  onMouseLeave: () => void;
+}
+
+LineNav.Menu = forwardRef<HTMLDivElement, MenuProps>(
+  ({ children, onMouseLeave }, ref) => {
+    return (
+      <div className={styles.menu} ref={ref} onMouseLeave={onMouseLeave}>
+        {children}
+      </div>
+    );
+  }
+);
+
+interface ItemProps {
+  to: string;
+  children: ReactNode;
+  onMouseOver: (e: MouseEvent<HTMLElement>) => void;
+}
+
+LineNav.Item = ({ to, children, onMouseOver }: ItemProps) => {
+  return (
+    <Link to={to} onMouseOver={onMouseOver}>
+      {children}
+    </Link>
+  );
+};
+
+interface LineProps {
+  width: number;
+  left: number;
+}
+
+LineNav.Line = ({ width, left }: LineProps) => {
+  return (
+    <div
+      className={styles.line}
+      style={{
+        width: `${width}%`,
+        left: `${left}px`,
+      }}
+    />
+  );
+};
