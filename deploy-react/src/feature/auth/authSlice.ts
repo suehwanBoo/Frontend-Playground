@@ -1,4 +1,7 @@
+import { onAuthStateChanged } from "firebase/auth";
 import { StateCreator } from "zustand";
+import { auth } from "../../firebaseConfig";
+import { getIsAdmin } from "./auth";
 
 type userType = {
   img: string | null;
@@ -9,10 +12,28 @@ type userType = {
 
 export type AuthState = {
   user: userType;
-  setUser: (user: userType) => void;
+  setUser: () => void;
 };
 
 export const authSlice: StateCreator<AuthState> = (set) => ({
   user: null,
-  setUser: (payload) => set(() => ({ user: payload })),
+  setUser: () => {
+    onAuthStateChanged(auth, async (user) => {
+      try {
+        if (user) {
+          const isAdmin = await getIsAdmin(user.uid);
+          set({
+            user: {
+              img: user.photoURL,
+              email: user.email,
+              uid: user.uid,
+              isAdmin,
+            },
+          });
+        } else set({ user: null });
+      } catch {
+        throw new Error("network error occured");
+      }
+    });
+  },
 });
