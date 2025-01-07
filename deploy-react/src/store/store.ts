@@ -10,4 +10,6 @@ const zustandStore = create<StoreState>()(
   }))
 );
 
+zustandStore.getState().setUser();
+
 export default zustandStore;
