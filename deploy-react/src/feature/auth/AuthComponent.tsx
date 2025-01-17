@@ -13,6 +13,7 @@ import signIn, { providerType, sighOut } from "./auth";
 import zustandStore from "../../store/store";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { MdOutlinePostAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 type clickState = {
   isClick: boolean;
@@ -23,7 +24,6 @@ const ClickContext = createContext<clickState | null>(null);
 
 export default function Auth() {
   const user = zustandStore((state) => state.user);
-
   return (
     <Auth.Provider>
       <Auth.ListIcon />
@@ -139,9 +139,9 @@ function AuthPost() {
   return (
     <>
       {user?.isAdmin && (
-        <div className={styles.logBtn}>
+        <Link className={styles.logBtn} to={"/post"}>
           <MdOutlinePostAdd />
-        </div>
+        </Link>
       )}
     </>
   );

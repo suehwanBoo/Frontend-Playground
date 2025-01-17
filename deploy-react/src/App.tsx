@@ -7,6 +7,8 @@ import ToolkitPage from "./feature/toolkit/ToolkitPage";
 import AboutPage from "./feature/about/AboutPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import PostPage from "./feature/post/PostPage";
+import { protectRouter } from "./utils/protect";
 
 const provider = createBrowserRouter([
   {
@@ -29,6 +31,11 @@ const provider = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/post",
+        element: <PostPage />,
+        loader: protectRouter,
       },
     ],
   },
