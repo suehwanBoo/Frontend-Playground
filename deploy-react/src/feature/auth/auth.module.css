@@ -12,6 +12,7 @@
   gap: 6px;
   padding: 10px;
   cursor: pointer;
+  background-color: #fff;
 }
 
 .loginBox > svg {
@@ -37,6 +38,7 @@
   border-radius: 50%;
   padding: 10px;
   background-color: #fff;
+  color: black;
 }
 
 .logBtn > svg {
@@ -50,4 +52,14 @@
   gap: 8px;
   position: absolute;
   bottom: calc(100% + 8px);
+  animation: show-up 0.3s ease;
+}
+
+@keyframes show-up {
+  0% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
