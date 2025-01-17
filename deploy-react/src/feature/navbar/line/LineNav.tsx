@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, To } from "react-router-dom";
 import styles from "./line.module.css";
 import useLineControll from "./hooks/useLineControll";
 import { forwardRef, MouseEvent, ReactNode } from "react";
@@ -33,7 +33,7 @@ LineNav.Container = ({ children }: { children: ReactNode }) => {
 };
 
 interface TitleProps {
-  to: string;
+  to: To;
   children: ReactNode;
 }
 
