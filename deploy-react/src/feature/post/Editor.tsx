@@ -7,26 +7,9 @@ import {
   useContext,
   useRef,
 } from "react";
-import {
-  BsBlockquoteRight,
-  BsTypeH1,
-  BsTypeH2,
-  BsTypeH3,
-  BsTypeH4,
-  BsTypeH5,
-  BsTypeH6,
-  BsTypeUnderline,
-} from "react-icons/bs";
-import {
-  PiListBullets,
-  PiTextItalic,
-  PiTextStrikethrough,
-} from "react-icons/pi";
-import { FiBold, FiLink } from "react-icons/fi";
-import { LuHighlighter } from "react-icons/lu";
-import { BiSolidColorFill } from "react-icons/bi";
-import { FaCode } from "react-icons/fa";
+
 import { PostContext } from "./context";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function PostEditor() {
   const post = useContext(PostContext);
@@ -72,19 +55,19 @@ PostEditor.TextFormat = function TextFormat() {
   return (
     <>
       <PostEditor.Menu onClick={setUnderLine}>
-        <BsTypeUnderline />
+        <Icon icon="tabler:text-color" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={setBold}>
-        <FiBold />
+        <Icon icon="tabler:bold" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={setStrike}>
-        <PiTextStrikethrough />
+        <Icon icon="gg:format-strike" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={setHighlight}>
-        <LuHighlighter />
+        <Icon icon="ph:highlighter-fill" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={setItalic}>
-        <PiTextItalic />
+        <Icon icon="uil:italic" />
       </PostEditor.Menu>
     </>
   );
@@ -98,10 +81,10 @@ PostEditor.ContentStructure = function ContentStructure() {
   return (
     <>
       <PostEditor.Menu onClick={setBlockquote}>
-        <BsBlockquoteRight />
+        <Icon icon="octicon:quote-24" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={setBulletList}>
-        <PiListBullets />
+        <Icon icon="ic:round-list" />
       </PostEditor.Menu>
     </>
   );
@@ -118,7 +101,8 @@ PostEditor.TextStyle = function TextStyle() {
   return (
     <>
       <PostEditor.Menu>
-        <BiSolidColorFill
+        <Icon
+          icon="bxs:color-fill"
           onClick={() => {
             inputRef.current?.click();
           }}
@@ -147,22 +131,13 @@ PostEditor.Heading = function Heading() {
   return (
     <>
       <PostEditor.Menu onClick={() => setHead(1)}>
-        <BsTypeH1 />
+        <Icon icon="gridicons:heading-h1" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={() => setHead(2)}>
-        <BsTypeH2 />
+        <Icon icon="gridicons:heading-h2" />
       </PostEditor.Menu>
       <PostEditor.Menu onClick={() => setHead(3)}>
-        <BsTypeH3 />
-      </PostEditor.Menu>
-      <PostEditor.Menu onClick={() => setHead(4)}>
-        <BsTypeH4 />
-      </PostEditor.Menu>
-      <PostEditor.Menu onClick={() => setHead(5)}>
-        <BsTypeH5 />
-      </PostEditor.Menu>
-      <PostEditor.Menu onClick={() => setHead(6)}>
-        <BsTypeH6 />
+        <Icon icon="gridicons:heading-h3" />
       </PostEditor.Menu>
     </>
   );
@@ -174,7 +149,7 @@ PostEditor.CodeBlock = function CodeBlock() {
   const setCode = () => editor?.chain().focus().toggleCodeBlock().run();
   return (
     <PostEditor.Menu onClick={setCode}>
-      <FaCode />
+      <Icon icon="tabler:code" />
     </PostEditor.Menu>
   );
 };
@@ -204,7 +179,7 @@ PostEditor.LinkLine = function LinkLine() {
   };
   return (
     <PostEditor.Menu onClick={setLink}>
-      <FiLink />
+      <Icon icon="material-symbols:link-rounded" />
     </PostEditor.Menu>
   );
 };

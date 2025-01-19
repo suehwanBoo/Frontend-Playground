@@ -1,9 +1,3 @@
-/**
- * Minified by jsDelivr using clean-css v5.3.2.
- * Original file: /npm/reset-css@4.0.1/reset.css
- *
- * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
- */
 a,
 abbr,
 acronym,
@@ -132,7 +126,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/*# sourceMappingURL=/sm/5afe8c7b72cef7e558e6906b60d8730580a09d990f202e65e984835fa5d757cc.map */
 
 :root {
   font-family: "Pretendard-Regular";

@@ -5,7 +5,7 @@ import {
   useState,
 } from "react";
 import styles from "./drop.module.css";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function DropButton({
   value,
@@ -70,7 +70,7 @@ DropButton.InputSelect = function InputSelect({
   };
   return (
     <div {...rest} onClick={click}>
-      <IoIosAddCircleOutline /> Add
+      <Icon icon="formkit:add" /> Add
     </div>
   );
 };
