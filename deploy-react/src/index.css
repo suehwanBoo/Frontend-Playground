@@ -29,6 +29,10 @@
     font-weight: bold;
   }
 
+  em {
+    font-style: italic;
+  }
+
   blockquote {
     --gray-color: rgba(61, 37, 20, 0.12);
     border-left: 3px solid var(--gray-color);

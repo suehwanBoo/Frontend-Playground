@@ -1,15 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BaseScreen from "./feature/screen/BaseScreen";
-import Home from "./feature/home/Home";
 import ErrorPage from "./feature/error/ErrorPage";
-import FuncPage from "./feature/func/FuncPage";
-import ToolkitPage from "./feature/toolkit/ToolkitPage";
-import AboutPage from "./feature/about/AboutPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import PostPage from "./feature/post/PostPage";
 import { protectRouter } from "./utils/protect";
+import { lazy } from "react";
 
+const HomePage = lazy(() => import("./feature/home/Home"));
+const FuncPage = lazy(() => import("./feature/func/FuncPage"));
+const ToolkitPage = lazy(() => import("./feature/toolkit/ToolkitPage"));
+const AboutPage = lazy(() => import("./feature/about/AboutPage"));
+const PostPage = lazy(() => import("./feature/post/PostPage"));
 const provider = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +19,7 @@ const provider = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: "/func",

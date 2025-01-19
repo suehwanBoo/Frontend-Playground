@@ -13,6 +13,7 @@
   padding: 10px;
   cursor: pointer;
   background-color: #fff;
+  z-index: 2;
 }
 
 .loginBox > svg {
