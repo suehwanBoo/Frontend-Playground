@@ -1,0 +1,50 @@
+.dropBtn {
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.selectLayout {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--line-color);
+  background-color: #fff;
+  border-radius: 5px;
+  min-width: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 9;
+}
+
+.selectLayout::-webkit-scrollbar {
+  width: 5px;
+}
+.selectLayout::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.selectLayout::-webkit-scrollbar-thumb {
+  background-color: #e3e3e3;
+  border-radius: 10px;
+  min-height: 50px;
+}
+
+.selectLayout > div:hover {
+  background-color: var(--line-color);
+}
+
+.selectLayout > div {
+  border-bottom: 1px solid var(--line-color);
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.selectLayout > div:last-child {
+  border-bottom: 0px;
+}

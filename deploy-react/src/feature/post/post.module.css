@@ -1,9 +1,9 @@
 .form {
-  padding: 50px var(--layout-offset);
+  padding: 30px 200px;
   --post-color: #f8fafc;
   background-color: var(--post-color);
   display: grid;
-  grid-template-columns: 5fr 2fr;
+  grid-template-columns: 5fr;
   gap: 20px;
   min-height: calc(100vh - 75.8px);
 }
@@ -29,7 +29,12 @@
 }
 
 .category {
-  background-color: #fff;
-  border: 1px solid var(--line-color);
-  border-radius: 15px;
+  display: flex;
+  border-radius: 15px 15px 0px 0px;
+  border-bottom: 1px solid var(--line-color);
+  height: 35px;
+  padding: 0px 15px;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
 }
