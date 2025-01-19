@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styles from "./sidebar.module.css";
-import { BiHomeAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function SideBar({
   endPoint,
@@ -13,7 +13,7 @@ export default function SideBar({
   return (
     <aside className={styles.sidebar}>
       <Link to={`/${endPoint}`} className={styles.intro}>
-        <BiHomeAlt />
+        <Icon icon="bx:home" />
         Introduction
       </Link>
       {children}
