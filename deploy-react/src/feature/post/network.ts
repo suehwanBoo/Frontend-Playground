@@ -1,4 +1,11 @@
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
 type MethodType = "func" | "toolkit";
@@ -32,9 +39,15 @@ async function addOrUpdateArticle({
     );
     const articleRef = doc(articlesRef, article.title);
     await setDoc(articleRef, article, { merge: true });
-  } catch (err) {
-    console.log("게시글 저장 또는 업데이트 실패", err);
+  } catch {
+    throw new Error();
   }
 }
 
-export { addOrUpdateArticle };
+async function getCategory(): Promise<DocumentData[]> {
+  const funcRef = collection(db, "func");
+  const toolkitRef = collection(db, "toolkit");
+  return Promise.allSettled([getDocs(funcRef), getDocs(toolkitRef)]);
+}
+
+export { addOrUpdateArticle, getCategory };

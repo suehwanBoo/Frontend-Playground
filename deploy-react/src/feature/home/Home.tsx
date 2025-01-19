@@ -10,7 +10,12 @@ export default function Home() {
         <header>
           <TitleBox />
         </header>
-        <img src={Illustration} alt="home-illust" className={styles.illust} />
+        <img
+          src={Illustration}
+          alt="home-illust"
+          className={styles.illust}
+          loading="lazy"
+        />
       </main>
       <Etc />
     </div>
