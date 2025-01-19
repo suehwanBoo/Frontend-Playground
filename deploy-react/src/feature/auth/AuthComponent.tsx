@@ -5,15 +5,11 @@ import {
   useContext,
   useState,
 } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { SiGithub } from "react-icons/si";
 import styles from "./auth.module.css";
-import { BsList } from "react-icons/bs";
 import signIn, { providerType, sighOut } from "./auth";
 import zustandStore from "../../store/store";
-import { RiLogoutBoxRLine } from "react-icons/ri";
-import { MdOutlinePostAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 type clickState = {
   isClick: boolean;
@@ -57,7 +53,7 @@ function AuthIcon() {
           }}
         />
       ) : (
-        <BsList></BsList>
+        <Icon icon="qlementine-icons:user-16" />
       )}
     </>
   );
@@ -100,13 +96,13 @@ function AuthButton({ provider }: { provider: providerType }) {
   if (!clickState)
     throw new Error("Please set correct (context value or provider)");
   const { clickHandler } = clickState;
-  let Icon;
+  let icon;
   switch (provider) {
     case "google":
-      Icon = <FcGoogle />;
+      icon = <Icon icon="flat-color-icons:google" />;
       break;
     case "github":
-      Icon = <SiGithub />;
+      icon = <Icon icon="bytesize:github" />;
       break;
   }
   return (
@@ -117,7 +113,7 @@ function AuthButton({ provider }: { provider: providerType }) {
         clickHandler(e);
       }}
     >
-      {Icon}
+      {icon}
     </div>
   );
 }
@@ -127,7 +123,7 @@ Auth.Button = AuthButton;
 function AuthLogout() {
   return (
     <div className={styles.logBtn} onClick={sighOut}>
-      <RiLogoutBoxRLine />
+      <Icon icon="mdi:logout" />
     </div>
   );
 }
@@ -140,7 +136,7 @@ function AuthPost() {
     <>
       {user?.isAdmin && (
         <Link className={styles.logBtn} to={"/post"}>
-          <MdOutlinePostAdd />
+          <Icon icon="material-symbols:post-add-sharp" />
         </Link>
       )}
     </>
